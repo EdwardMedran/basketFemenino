@@ -86,6 +86,7 @@
                     <span class="text-2xl font-bold gradient-text">Basket Femenino Cañete</span>
                 </div>
                 
+                <!-- Links (desktop) -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#inicio" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
                     <a href="#nosotros" class="text-gray-700 hover:text-red-600 transition-colors">Nosotros</a>
@@ -94,14 +95,79 @@
                     <a href="#contacto" class="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
                 </div>
                 
-                <button class="md:hidden text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                <!-- Botón (móvil) -->
+                <button id="menu-toggle"
+                        class="md:hidden p-2 rounded hover:bg-white/10"
+                        aria-label="Abrir menú"
+                        aria-controls="mobile-menu"
+                        aria-expanded="false">
+                    <!-- Icono hamburguesa -->
+                    <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <!-- Icono X (cerrar) -->
+                    <svg id="icon-close" class="h-6 w-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6l-12 12"/>
                     </svg>
                 </button>
+                </div>
+            </div>
+
+            <!-- Panel móvil con transición -->
+                <div id="mobile-menu"
+                    class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-1000 ease-in-out border-t border-white/10">
+                    <ul class="flex flex-col py-2 px-6 gap-2 bg-white/70 text-gray-800">
+                    <li><a href="#inicio" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Inicio</a></li>
+                    <li><a href="#nosotros" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Quienes Somos</a></li>
+                    <li><a href="#adopta" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Servicios</a></li>
+                    <li><a href="#ayuda" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Preguntas Frecuentes</a></li>
+                    <li><a href="#contacto" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Contacto</a></li>
+                    </ul>
+                </div>
+                </nav>
             </div>
         </div>
     </nav>
+
+            <!-- Espaciador por nav fijo -->
+        <div class="h-20"></div>
+
+        <script>
+        const toggleBtn   = document.getElementById("menu-toggle");
+        const mobileMenu  = document.getElementById("mobile-menu");
+        const iconOpen    = document.getElementById("icon-open");
+        const iconClose   = document.getElementById("icon-close");
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        function toggleMenu(forceState) {
+            const opening = forceState !== undefined ? forceState : mobileMenu.classList.contains('max-h-0');
+
+            // Altura y opacidad
+            mobileMenu.classList.toggle('max-h-0', !opening);
+            mobileMenu.classList.toggle('opacity-0', !opening);
+            mobileMenu.classList.toggle('max-h-[60vh]', opening); // altura animable suficiente
+            mobileMenu.classList.toggle('opacity-100', opening);
+
+            // Íconos y aria-expanded
+            iconOpen.classList.toggle('hidden', opening);
+            iconClose.classList.toggle('hidden', !opening);
+            toggleBtn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        }
+
+        // Estado inicial (cerrado)
+        mobileMenu.classList.add('max-h-0','opacity-0');
+        mobileMenu.classList.remove('hidden'); // importante: no usar hidden para poder animar
+
+        toggleBtn.addEventListener("click", () => toggleMenu());
+
+        // Cerrar al hacer clic en un enlace (UX ✅)
+        mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+
+        // Respeta usuarios con "reduced motion"
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            mobileMenu.classList.remove('transition-all','duration-500','ease-in-out');
+        }
+        </script>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero-section pt-20">
