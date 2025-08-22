@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basket Femenino Cañete - Fomentando el Baloncesto Femenino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),  url("img/fondoDifuminado.jpg") no-repeat center center/cover;
+            min-height: 100vh;
+        }
+        
+        .basketball-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .basketball-icon:hover {
+            transform: rotate(360deg);
+        }
+        
+        .stats-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .tournament-card {
+            transition: all 0.3s ease;
+        }
+        
+        .tournament-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #dc2626 0%, #1e3a8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce 3s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-5%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-4 inset-x-0 mx-auto max-w-6xl
+            bg-white/90 backdrop-blur-md
+            shadow-xl ring-1 ring-black/10
+            rounded-2xl z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <img src="img/logo.png" alt="logo" class="w-16 h-auto">
+                    <span class="text-2xl font-bold gradient-text">Basket Femenino Cañete</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
+                    <a href="#nosotros" class="text-gray-700 hover:text-red-600 transition-colors">Nosotros</a>
+                    <a href="#torneos" class="text-gray-700 hover:text-red-600 transition-colors">Torneos</a>
+                    <a href="#galeria" class="text-gray-700 hover:text-red-600 transition-colors">Galería</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
+                </div>
+                
+                <button class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section pt-20">
+        <div class="max-w-7xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                    Potenciando el <span class="text-orange-400">Baloncesto</span> Femenino
+                </h1>
+                <p class="text-xl text-gray-100 mb-8">
+                    Organizamos campeonatos y eventos para promover la participación femenina en el baloncesto. 
+                    ¡Únete a nuestra comunidad y vive la pasión del deporte!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors animate-bounce-slow">
+                        Inscribirse Ahora
+                    </button>
+                    <button class="border-2 border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 rounded-lg font-semibold transition-colors">
+                        Ver Torneos
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-10 md:mt-0">
+                <div class="relative">
+                    <img src="img/perfil.jpg" alt="Grupo de jugadoras de baloncesto femenino celebrando victoria en cancha con uniformes deportivos coloridos" class="rounded-2xl shadow-2xl transform w-45 rotate-2" />
+                    <div class="absolute -bottom-4 -right-4 bg-orange-500 text-white px-4 py-2 rounded-lg shadow-lg">
+                        <span class="font-bold">+50</span> Jugadoras
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 center">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="stats-card bg-gradient-to-br from-blue-600 to-red-600 text-white p-6 rounded-xl text-center">
+                    <div class="text-4xl font-bold mb-2">3+</div>
+                    <div class="text-lg">Torneos Organizados</div>
+                </div>
+                <div class="stats-card bg-gradient-to-br from-red-600 to-orange-500 text-white p-6 rounded-xl text-center">
+                    <div class="text-4xl font-bold mb-2">10+</div>
+                    <div class="text-lg">Equipos Participantes</div>
+                </div>
+                <div class="stats-card bg-gradient-to-br from-yellow-400 to-green-500 text-white p-6 rounded-xl text-center">
+                    <div class="text-4xl font-bold mb-2">2</div>
+                    <div class="text-lg">Años de Experiencia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Nuestra Misión</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Crear espacios inclusivos donde las mujeres puedan desarrollar sus habilidades deportivas, 
+                    formar amistades y competir en un ambiente de respeto y compañerismo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-red-600 text-2xl">🏆</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Competencia Saludable</h3>
+                    <p class="text-gray-600">
+                        Organizamos torneos con reglas claras y fair play como pilares fundamentales.
+                    </p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl">👥</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Comunidad</h3>
+                    <p class="text-gray-600">
+                        Conectamos jugadoras, entrenadoras y amantes del baloncesto femenino.
+                    </p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-green-600 text-2xl">🌟</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Desarrollo Personal</h3>
+                    <p class="text-gray-600">
+                        Fomentamos el crecimiento personal y la confianza a través del deporte.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournaments Section -->
+    <section id="torneos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Próximos Torneos</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Participa en nuestros próximos torneos y demuestra tu talento en la cancha.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="tournament-card bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-2">Torneo de Primavera Sub-12</h3>
+                    <p class="text-gray-600 mb-4">Fecha: 15 de abril de 2025</p>
+                    <p class="text-gray-600 mb-4">Ubicación: Coliseo Lolo Fernandéz</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
+                        Inscribirse
+                    </button>
+                </div>
+                <div class="tournament-card bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-2">Copa de Verano</h3>
+                    <p class="text-gray-600 mb-4">Fecha: 20 de julio de 2025</p>
+                    <p class="text-gray-600 mb-4">Ubicación: Coliseo Lolo Fernandéz</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
+                        Inscribirse
+                    </button>
+                </div>
+                <div class="tournament-card bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-2">Campeonato Provincial</h3>
+                    <p class="text-gray-600 mb-4">Fecha: 10 de octubre de 2025</p>
+                    <p class="text-gray-600 mb-4">Ubicación: Coliseo Lolo Fernandéz</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
+                        Inscribirse
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Galería</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Momentos inolvidables de nuestros torneos y eventos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <img src="img/foto1.jpg" alt="Imagen de un torneo" class="w-[300px] h-[200px] object-cover rounded-lg shadow-lg" />
+                <img src="https://placehold.co/300x200" alt="Jugadoras en acción" class="rounded-lg shadow-lg" />
+                <img src="https://placehold.co/300x200" alt="Celebración de equipo" class="rounded-lg shadow-lg" />
+                <img src="https://placehold.co/300x200" alt="Entrenamiento" class="rounded-lg shadow-lg" />
+                <img src="https://placehold.co/300x200" alt="Torneo en progreso" class="rounded-lg shadow-lg" />
+                <img src="https://placehold.co/300x200" alt="Jugadoras felices" class="rounded-lg shadow-lg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Contacto</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Si tienes preguntas o deseas más información, no dudes en contactarnos.
+                </p>
+            </div>
+
+            <form class="max-w-lg mx-auto">
+                <div class="mb-4">
+                    <label for="nombre" class="block text-gray-700">Nombre</label>
+                    <input type="text" id="nombre" class="w-full border border-gray-300 p-2 rounded-lg" required />
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Correo Electrónico</label>
+                    <input type="email" id="email" class="w-full border border-gray-300 p-2 rounded-lg" required />
+                </div>
+                <div class="mb-4">
+                    <label for="mensaje" class="block text-gray-700">Mensaje</label>
+                    <textarea id="mensaje" rows="4" class="w-full border border-gray-300 p-2 rounded-lg" required></textarea>
+                </div>
+                <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
+                    Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2025 Basket Femenino. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="https://www.facebook.com/profile.php?id=61567589915044" target="_blank" class="hover:text-orange-400">Facebook</a>
+                <a href="https://www.instagram.com/basketfemenino_canete/" target="_blank" class="hover:text-orange-400">Instagram</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
