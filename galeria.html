@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Campeonatos - Basket Fem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+        
+        .gallery-tab {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .gallery-tab.active {
+            background: linear-gradient(135deg, #dc2626 0%, #1e3a8a 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-tab:hover:not(.active) {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+        
+        .gallery-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            background: white;
+            border-radius: 0 12px 12px 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-content.active {
+            display: grid;
+        }
+        
+        .gallery-image {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-image img {
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-image:hover img {
+            transform: scale(1.1);
+        }
+        
+        .championship-title {
+            background: linear-gradient(135deg, #1e3a8a 0%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tab-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 inset-x-0 mx-auto max-w-6xl
+            bg-white/90 backdrop-blur-md
+            shadow-xl ring-1 ring-black/10
+            rounded-2xl z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <img src="img/logo.png" alt="logo" class="w-16 h-auto">
+                    <span class="text-2xl font-bold gradient-text">Basket Femenino Cañete</span>
+                </div>
+                
+                <!-- Links (desktop) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
+                    <a href="#nosotros" class="text-gray-700 hover:text-red-600 transition-colors">Nosotros</a>
+                    <a href="#torneos" class="text-gray-700 hover:text-red-600 transition-colors">Torneos</a>
+                    <a href="#galeria" class="text-gray-700 hover:text-red-600 transition-colors">Galería</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
+                </div>
+                
+                <!-- Botón (móvil) -->
+                <button id="menu-toggle"
+                        class="md:hidden p-2 rounded hover:bg-white/10"
+                        aria-label="Abrir menú"
+                        aria-controls="mobile-menu"
+                        aria-expanded="false">
+                    <!-- Icono hamburguesa -->
+                    <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <!-- Icono X (cerrar) -->
+                    <svg id="icon-close" class="h-6 w-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6l-12 12"/>
+                    </svg>
+                </button>
+                </div>
+            </div>
+
+            <!-- Panel móvil con transición -->
+                <div id="mobile-menu"
+                    class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-1000 ease-in-out border-t border-white/10">
+                    <ul class="flex flex-col py-2 px-6 gap-2 bg-white/70 text-gray-800">
+                    <li><a href="#inicio" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Inicio</a></li>
+                    <li><a href="#nosotros" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Quienes Somos</a></li>
+                    <li><a href="#adopta" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Servicios</a></li>
+                    <li><a href="#ayuda" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Preguntas Frecuentes</a></li>
+                    <li><a href="#contacto" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Contacto</a></li>
+                    </ul>
+                </div>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+            <!-- Espaciador por nav fijo -->
+        <div class="h-20"></div>
+
+        <script>
+        const toggleBtn   = document.getElementById("menu-toggle");
+        const mobileMenu  = document.getElementById("mobile-menu");
+        const iconOpen    = document.getElementById("icon-open");
+        const iconClose   = document.getElementById("icon-close");
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        function toggleMenu(forceState) {
+            const opening = forceState !== undefined ? forceState : mobileMenu.classList.contains('max-h-0');
+
+            // Altura y opacidad
+            mobileMenu.classList.toggle('max-h-0', !opening);
+            mobileMenu.classList.toggle('opacity-0', !opening);
+            mobileMenu.classList.toggle('max-h-[60vh]', opening); // altura animable suficiente
+            mobileMenu.classList.toggle('opacity-100', opening);
+
+            // Íconos y aria-expanded
+            iconOpen.classList.toggle('hidden', opening);
+            iconClose.classList.toggle('hidden', !opening);
+            toggleBtn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        }
+
+        // Estado inicial (cerrado)
+        mobileMenu.classList.add('max-h-0','opacity-0');
+        mobileMenu.classList.remove('hidden'); // importante: no usar hidden para poder animar
+
+        toggleBtn.addEventListener("click", () => toggleMenu());
+
+        // Cerrar al hacer clic en un enlace (UX ✅)
+        mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+
+        // Respeta usuarios con "reduced motion"
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            mobileMenu.classList.remove('transition-all','duration-500','ease-in-out');
+        }
+        </script>
+
+    <main class="pt-32 max-w-6xl w-full mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                <span class="championship-title">Momentos Inolvidables de Nuestros Campeonatos</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Explora los momentos más emocionantes de nuestros torneos de baloncesto femenino
+            </p>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="tab-container p-6 mb-8">
+            <div class="flex flex-wrap gap-2 justify-center">
+                <div class="gallery-tab active px-6 py-3 font-semibold text-gray-700" data-tab="torneo-primavera">
+                    🏆 Segundo Campeonato Femenino 2025
+                </div>
+                <div class="gallery-tab px-6 py-3 font-semibold text-gray-700" data-tab="copa-verano">
+                    ⭐ Primer Campeonato Femenino 2025
+                </div>
+                <div class="gallery-tab px-6 py-3 font-semibold text-gray-700" data-tab="campeonato-nacional">
+                    🥇 Campeonato Nacional 2023
+                </div>
+                <div class="gallery-tab px-6 py-3 font-semibold text-gray-700" data-tab="liga-invierno">
+                    ❄️ Liga de Invierno 2023
+                </div>
+                <div class="gallery-tab px-6 py-3 font-semibold text-gray-700" data-tab="torneo-amistad">
+                    🤝 Torneo de la Amistad 2023
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Content -->
+        <div class="space-y-8">
+            <!-- Torneo de Primavera -->
+            <div class="gallery-content active p-6" id="torneo-primavera">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">🏆 Segundo Campeonato Femenino 2025</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-image">
+                        <img src="img/fotoGeneral.JPG" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Foto Principal</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="img/ComiteYMvp.JPG" class="w-full h-48 object-cover object-[50%_20%]" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Premiación MVP</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="img/ComitePremiando2doLugar.JPG" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Premiación</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="img/PrimerLugar.JPG" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Primer Lugar</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="img/SegundoLugar.JPG" alt="Acción de juego durante semifinales con jugadora realizando bandeja bajo canasta" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Segundo Lugar</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="img/fotoSub12.JPG" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Equipos Sub-12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copa de Verano -->
+            <div class="gallery-content p-6" id="copa-verano">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">⭐ Primer Campeonato Femenino 2025</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c8b756e4-5855-4ec8-b1b1-95f443230884.png" alt="Inauguración de la copa de verano con desfile de equipos en cancha" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Ceremonia de Inauguración</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c49cdd0f-3c6e-4eec-a1ee-c1b242bfa099.png" alt="Jugadora anotando triple decisivo en partido crucial bajo el sol" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Triple Decisivo - Cuartos de Final</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8ee259f9-eae5-41e3-8f97-f8463a467729.png" alt="Celebración grupal de equipo ganador con confeti y abrazos" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Celebración del Equipo Ganador</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campeonato Nacional -->
+            <div class="gallery-content p-6" id="campeonato-nacional">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Campeonato Nacional 2023</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/772ec26f-6a41-42c3-a981-d3d4be11f9ac.png" alt="Vista aérea del estadio nacional lleno durante la final del campeonato" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Estadio Nacional - Final</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f08ff272-f709-4927-8198-4763e0693d9e.png" alt="Entrevista a jugadora MVP del campeonato con periodistas" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Entrevista a la MVP del Torneo</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5b95b5b7-634d-4f0a-92c1-38c0af0d5dc2.png" alt="Momento emotivo de entrega de trofeo con lágrimas de alegría" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Momento Emotivo de Premiación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liga de Invierno -->
+            <div class="gallery-content p-6" id="liga-invierno">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Liga de Invierno 2023</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/21e9044b-58d5-48d5-857f-57d11a343d63.png" alt="Partido bajo la lluvia con jugadoras demostrando gran actitud deportiva" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Partido Bajo la Lluvia</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f3694bb2-1d91-4206-b9f6-7d064a0ca1de.png" alt="Equipo posando con uniformes de invierno y bufandas del club" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Foto Oficial del Equipo</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f1a590a5-6b00-4a27-8c0e-4985d25dcbe4.png" alt="Calentamiento previo al partido con ejercicios de coordinación" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Sesión de Calentamiento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Torneo de la Amistad -->
+            <div class="gallery-content p-6" id="torneo-amistad">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Torneo de la Amistad 2023</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/173983ec-4cf7-4ebe-bc7b-3d1c0c7a60b5.png" alt="Jugadoras de diferentes equipos abrazándose después del partido" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Momento de Amistad Post-Partido</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/23e3f5a8-2d07-4b61-a86e-9ec5b6c4a731.png" alt="Actividad grupal de team building entre todos los participantes" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Actividad de Team Building</p>
+                        </div>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/88cbd84a-71b5-4700-99dc-a2b116394009.png" alt="Cena de clausura con todas las jugadoras compartiendo experiencias" class="w-full h-48 object-cover" />
+                        <div class="p-3 bg-white">
+                            <p class="text-sm text-gray-600">Cena de Clausura del Torneo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.gallery-tab');
+            const contents = document.querySelectorAll('.gallery-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all content
+                    contents.forEach(content => content.classList.remove('active'));
+                    // Show corresponding content
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Add hover effects
+            tabs.forEach(tab => {
+                tab.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(-2px)';
+                        this.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+                    }
+                });
+                
+                tab.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
