@@ -88,10 +88,10 @@
                 
                 <!-- Links (desktop) -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#inicio" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
+                    <a href="https://edwardmedran.github.io/basketFemenino/" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
                     <a href="#nosotros" class="text-gray-700 hover:text-red-600 transition-colors">Nosotros</a>
                     <a href="#torneos" class="text-gray-700 hover:text-red-600 transition-colors">Torneos</a>
-                    <a href="#galeria" class="text-gray-700 hover:text-red-600 transition-colors">Galería</a>
+                    <a href="https://edwardmedran.github.io/basketFemenino/galeria" class="text-gray-700 hover:text-red-600 transition-colors">Galería</a>
                     <a href="#contacto" class="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
                 </div>
                 
@@ -117,10 +117,10 @@
                 <div id="mobile-menu"
                     class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-1000 ease-in-out border-t border-white/10">
                     <ul class="flex flex-col py-2 px-6 gap-2 bg-white/70 text-gray-800">
-                    <li><a href="#inicio" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Inicio</a></li>
-                    <li><a href="#nosotros" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Quienes Somos</a></li>
-                    <li><a href="#adopta" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Servicios</a></li>
-                    <li><a href="#ayuda" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Preguntas Frecuentes</a></li>
+                    <li><a href="https://edwardmedran.github.io/basketFemenino/" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Inicio</a></li>
+                    <li><a href="#nosotros" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Nosotros</a></li>
+                    <li><a href="#torneos" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Torneos</a></li>
+                    <li><a href="https://edwardmedran.github.io/basketFemenino/galeria" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Galería</a></li>
                     <li><a href="#contacto" class="block py-2 hover:text-teal-600 transform hover:scale-105 transition-all">Contacto</a></li>
                     </ul>
                 </div>
@@ -129,8 +129,7 @@
         </div>
     </nav>
 
-            <!-- Espaciador por nav fijo -->
-        <div class="h-20"></div>
+        
 
         <script>
         const toggleBtn   = document.getElementById("menu-toggle");
@@ -170,8 +169,8 @@
         </script>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-section pt-20">
-        <div class="max-w-7xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+    <section id="inicio" class="hero-section abso">
+        <div class="max-w-7xl mx-auto px-4 py-40 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 text-center md:text-left">
                 <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
                     Potenciando el <span class="text-orange-400">Baloncesto</span> Femenino
@@ -275,7 +274,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="tournament-card bg-gray-100 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-2">Torneo de Primavera Sub-12</h3>
+                    <h3 class="text-xl font-semibold mb-2"> I Torneo Femenino Sub-12</h3>
                     <p class="text-gray-600 mb-4">Fecha: 15 de abril de 2025</p>
                     <p class="text-gray-600 mb-4">Ubicación: Coliseo Lolo Fernandéz</p>
                     <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
@@ -313,7 +312,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-                <img src="img/foto1.jpg" alt="Imagen de un torneo" class="w-[300px] h-[200px] object-cover rounded-lg shadow-lg" />
+                <img src="img/galeriaPrincipal/fotoComiteRandom.JPG" alt="Imagen de un torneo" class="w-[300px] h-[200px] object-cover rounded-lg shadow-lg" />
                 <img src="https://placehold.co/300x200" alt="Jugadoras en acción" class="rounded-lg shadow-lg" />
                 <img src="https://placehold.co/300x200" alt="Celebración de equipo" class="rounded-lg shadow-lg" />
                 <img src="https://placehold.co/300x200" alt="Entrenamiento" class="rounded-lg shadow-lg" />
@@ -335,23 +334,68 @@
 
             <form class="max-w-lg mx-auto">
                 <div class="mb-4">
-                    <label for="nombre" class="block text-gray-700">Nombre</label>
-                    <input type="text" id="nombre" class="w-full border border-gray-300 p-2 rounded-lg" required />
+                    <label for="nombre" class="block text-gray-700">Nombre Completo</label>
+                    <input type="text" id="name" class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required />
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700">Correo Electrónico</label>
-                    <input type="email" id="email" class="w-full border border-gray-300 p-2 rounded-lg" required />
+                    <input type="email" id="email" class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required />
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-sm font-medium mb-1 text-gray-700">Teléfono</label>
+                    <input id="phone" type="tel" class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
                 </div>
                 <div class="mb-4">
                     <label for="mensaje" class="block text-gray-700">Mensaje</label>
-                    <textarea id="mensaje" rows="4" class="w-full border border-gray-300 p-2 rounded-lg" required></textarea>
+                    <textarea id="message" rows="4" class="w-full border border-gray-300 p-2 rounded-lg" required></textarea>
                 </div>
+
+                 <!-- Opcional: asunto y destino visibles en el correo -->
+                    <input type="hidden" name="_subject" value="Mensaje desde la Pagina Web!!!">
+                    <input type="hidden" name="_replyto">
+
+
                 <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
                     Enviar Mensaje
                 </button>
+                <p id="formMsg" style="margin-top:10px; text-align: center;"></p>
             </form>
         </div>
     </section>
+
+    <!-- Scrip para enviar correo -->
+   <script>
+    const form = document.getElementById('contactForm');
+    const msg  = document.getElementById('formMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          msg.textContent = '¡Gracias! Tu mensaje fue enviado con éxito :)';
+          msg.style.color = '#2e7d32';
+        } else {
+          const data = await res.json().catch(()=> ({}));
+          msg.textContent = data?.errors?.[0]?.message || '¡Ups! Ocurrió un error al enviar. Intenta nuevamente.';
+          msg.style.color = '#c62828';
+        }
+      } catch (err) {
+        msg.textContent = 'No hay conexión :(  Intenta nuevamente.';
+        msg.style.color = '#c62828';
+      }
+    });
+
+        const fd = new FormData(form);
+        fd.set('_replyto', form.elements.email.value); // usa el correo que escribe el usuario
+    </script>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6">
