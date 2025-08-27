@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scrool-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,10 @@
             box-sizing: border-box;
         }
         
+        html {
+  scroll-behavior: smooth;
+}
+
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -71,6 +75,10 @@
                 animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
             }
         }
+
+        [id] {
+            scroll-margin-top: 80px;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -88,7 +96,7 @@
                 
                 <!-- Links (desktop) -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="https://edwardmedran.github.io/basketFemenino/" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
+                    <a href="#inicio" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
                     <a href="#nosotros" class="text-gray-700 hover:text-red-600 transition-colors">Nosotros</a>
                     <a href="#torneos" class="text-gray-700 hover:text-red-600 transition-colors">Torneos</a>
                     <a href="https://edwardmedran.github.io/basketFemenino/galeria" class="text-gray-700 hover:text-red-600 transition-colors">Galería</a>
@@ -220,7 +228,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="nosotros" class="py-20 bg-gray-50">
+    <section id="nosotros" class="py-20 bg-gray-50 scroll-mt-24 px-4">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Nuestra Misión</h2>
@@ -263,7 +271,7 @@
     </section>
 
     <!-- Tournaments Section -->
-    <section id="torneos" class="py-20 bg-white">
+    <section id="torneos" class="py-20 bg-white scroll-mt-24 px-4">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Próximos Torneos</h2>
@@ -323,7 +331,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contacto" class="relative py-20" style="background-image: url(img/fondoDifuminado2.jpg); background-size: cover; background-position: center;">
+    <section id="contacto" class="relative py-20 scroll-mt-24 px-4" style="background-image: url(img/fondoDifuminado2.jpg); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
